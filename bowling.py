@@ -10,11 +10,14 @@ class Game(object):
         self.rolls[self.current_roll] = pins
         self.current_roll += 1
 
+    def is_spare(self, findex):
+        return self.rolls[findex] + self.rolls[findex + 1] == 10
+
     def score(self):
         score = 0
         frame_index = 0
         for frame in range(10):
-            if self.rolls[frame_index] + self.rolls[frame_index + 1] == 10:
+            if self.is_spare(frame_index):
                 score += 10 + self.rolls[frame_index + 2]
                 frame_index += 2
             else:

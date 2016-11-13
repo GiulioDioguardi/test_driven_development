@@ -13,6 +13,9 @@ class GameTest(unittest.TestCase):
         for i in range(n):
             self.g.roll(pins)
 
+    def spare(self):
+        self.roll_many(2, 5)
+
     def test_gutter_game(self):
         self.roll_many(20, 0)
         self.assertEqual(0, self.g.score())
@@ -22,8 +25,7 @@ class GameTest(unittest.TestCase):
         self.assertEqual(20, self.g.score())
 
     def test_spare(self):
-        self.g.roll(5)
-        self.g.roll(5) #spare
+        self.spare()
         self.g.roll(3)
         self.roll_many(17, 0)
         self.assertEqual(16, self.g.score())
