@@ -9,11 +9,13 @@ class GameTest(unittest.TestCase):
     def setUp(self):
         self.g = Game()
 
-    def test_can_roll(self):
-        self.g.roll()
+    def roll_many(self, n, pins):
+        for i in range(n):
+            self.g.roll(pins)
 
     def test_gutter_game(self):
-        pass
+        self.roll_many(20, 0)
+        self.assertEqual(0, self.g.score())
 
 if __name__ == "__main__":
     unittest.main()
