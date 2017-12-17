@@ -59,3 +59,13 @@ class YathzeeScoreChecker(object):
         if any(seqs):
             return sum(self.dices)
         return 0
+
+    def four_of_kind(self):
+        seqs = []
+        for i in range(2):
+            seqs.append(self.dices[0 + i] == self.dices[1 + i] and \
+                self.dices[0 + i] == self.dices[2 + i] and \
+                self.dices[0 + i] == self.dices[3 + i])
+        if any(seqs):
+            return sum(self.dices)
+        return 0
