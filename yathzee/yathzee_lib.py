@@ -52,12 +52,15 @@ class YathzeeScoreChecker(object):
         return score
 
     def three_of_kind(self):
-        return self.number_of_kind(3)
+        return self.number_of_kind(3, sum(self.dices))
 
     def four_of_kind(self):
-        return self.number_of_kind(4)
+        return self.number_of_kind(4, sum(self.dices))
 
-    def number_of_kind(self, number):
+    def yathzee(self):
+        return self.number_of_kind(5, 50)
+
+    def number_of_kind(self, number, score):
         seqs = []
         for i in range(6 - number):
             is_kind = True
@@ -65,6 +68,6 @@ class YathzeeScoreChecker(object):
                 is_kind = is_kind and self.dices[0 + i] == self.dices[j + i]
             seqs.append(is_kind)
         if any(seqs):
-            return sum(self.dices)
+            return score
         return 0
 
