@@ -51,3 +51,11 @@ class YathzeeScoreChecker(object):
     def sixes(self):
         return self.add_designated_values(6)
 
+    def three_of_kind(self):
+        seqs = []
+        for i in range(3):
+            seqs.append(self.dices[0 + i] == self.dices[1 + i] and \
+                self.dices[0 + i] == self.dices[2 + i])
+        if any(seqs):
+            return sum(self.dices)
+        return 0

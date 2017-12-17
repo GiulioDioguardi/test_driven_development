@@ -65,5 +65,23 @@ class TestYathzeeScoreCheker(unittest.TestCase):
         score_checker = self.create_score_checker([6,5,6,5,3])
         self.assertEquals(12, score_checker.sixes())
 
+    def test_three_of_kind(self):
+        score_checker = self.create_score_checker([3,6,4,3,3])
+        self.assertEquals(19, score_checker.three_of_kind())
+
+    def test_three_of_kind_2(self):
+        score_checker = self.create_score_checker([5,6,1,5,5])
+        self.assertEquals(22, score_checker.three_of_kind())
+
+    def test_three_of_kind_3(self):
+        score_checker = self.create_score_checker([6,6,1,6,5])
+        self.assertEquals(24, score_checker.three_of_kind())
+
+    def test_not_three_of_kind(self):
+        score_checker = self.create_score_checker([6,4,1,6,5])
+        self.assertEquals(0, score_checker.three_of_kind())
+
+
+
 if __name__ == "__main__":
     unittest.main()
