@@ -26,13 +26,6 @@ class YathzeeScoreChecker(object):
                 "Integer out of range. Must be between 1 and 6. "
                 "Got %s" % (self.dices))
 
-    def add_designated_values(self, value):
-        score = 0
-        for dice in self.dices:
-            if dice == value:
-                score += value
-        return score
-
     def ones(self):
         return self.add_designated_values(1)
 
@@ -51,14 +44,15 @@ class YathzeeScoreChecker(object):
     def sixes(self):
         return self.add_designated_values(6)
 
+    def add_designated_values(self, value):
+        score = 0
+        for dice in self.dices:
+            if dice == value:
+                score += value
+        return score
+
     def three_of_kind(self):
-        seqs = []
-        for i in range(3):
-            seqs.append(self.dices[0 + i] == self.dices[1 + i] and \
-                self.dices[0 + i] == self.dices[2 + i])
-        if any(seqs):
-            return sum(self.dices)
-        return 0
+        return self.number_of_kind(3)
 
     def four_of_kind(self):
         seqs = []
@@ -69,3 +63,13 @@ class YathzeeScoreChecker(object):
         if any(seqs):
             return sum(self.dices)
         return 0
+
+    def number_of_kind(self, number):
+        seqs = []
+        for i in range(6 - number):
+            seqs.append(self.dices[0 + i] == self.dices[1 + i] and \
+                self.dices[0 + i] == self.dices[2 + i])
+        if any(seqs):
+            return sum(self.dices)
+        return 0
+
