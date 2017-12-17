@@ -23,6 +23,20 @@ class TestYathzeeScoreCheker(unittest.TestCase):
         except YathzeeScoreCheckerError as ex:
             check_for_message(self, ex, "Incorrect list length")
 
+    def test_not_ints_in_list(self):
+        try:
+            self.create_score_checker([1,2,3,"four","five"])
+            self.fail("Expected error has not occurred")
+        except YathzeeScoreCheckerError as ex:
+            check_for_message(self, ex, "List must only contain integers")
+
+    def test_ints_are_out_of_range_too_low(self):
+        try:
+            self.create_score_checker([0,1,2,3,4])
+            self.fail("Expected error has not occurred")
+        except YathzeeScoreCheckerError as ex:
+            check_for_message(self, ex, "Integer out of range")
+
     def test_ones_one_present(self):
         score_checker = self.create_score_checker([1,5,6,3,4])
         self.assertEquals(1, score_checker.ones())
