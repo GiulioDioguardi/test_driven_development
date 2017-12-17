@@ -7,14 +7,19 @@ class YathzeeScoreChecker(object):
 
     def __init__(self, dices):
         self.dices = sorted(dices)
-        if len(dices) != 5:
-            raise YathzeeScoreCheckerError(
-                "Incorrect list length. Required 5, got %s" % (len(dices)))
-        if not all(isinstance(x, int) for x in dices):
-            raise YathzeeScoreCheckerError(
-                "List must only contain integers. Got %s" % (dices))
+        self.check_length()
+        self.check_type()
         self.check_range()
 
+    def check_length(self):
+        if len(self.dices) != 5:
+            raise YathzeeScoreCheckerError(
+                "Incorrect list length. Required 5, got %s" % (len(self.dices)))
+
+    def check_type(self):
+        if not all(isinstance(x, int) for x in self.dices):
+            raise YathzeeScoreCheckerError(
+                "List must only contain integers. Got %s" % (self.dices))
     def check_range(self):
         if any((x < 1 or x > 6) for x in self.dices):
             raise YathzeeScoreCheckerError(
