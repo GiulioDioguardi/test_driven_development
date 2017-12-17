@@ -1,8 +1,14 @@
 #!/usr/bin/python
 
+class YathzeeScoreCheckerError(Exception):
+    pass
+
 class YathzeeScoreChecker(object):
 
     def __init__(self, dices):
+        if len(dices) != 5:
+            raise YathzeeScoreCheckerError(
+                "Incorrect list length. Required 5, got %s" % (len(dices)))
         self.dices = sorted(dices)
 
     def ones(self):
