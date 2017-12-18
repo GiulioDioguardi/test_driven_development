@@ -109,6 +109,34 @@ class TestYathzeeScoreCheker(unittest.TestCase):
         score_checker = self.create_score_checker([4,4,4,4,6])
         self.assertEquals(0, score_checker.yathzee())
 
+    def test_small_straight(self):
+        score_checker = self.create_score_checker([1,2,3,4,6])
+        self.assertEquals(30, score_checker.small_straight())
+
+    def test_small_straight_2(self):
+        score_checker = self.create_score_checker([5,1,3,4,6])
+        self.assertEquals(30, score_checker.small_straight())
+
+    def test_small_straight_3(self):
+        score_checker = self.create_score_checker([5,3,3,4,6])
+        self.assertEquals(30, score_checker.small_straight())
+
+    def test_small_straight_4(self):
+        score_checker = self.create_score_checker([5,3,4,4,6])
+        self.assertEquals(30, score_checker.small_straight())
+
+    def test_small_straight_5(self):
+        score_checker = self.create_score_checker([5,3,4,5,6])
+        self.assertEquals(30, score_checker.small_straight())
+
+    def test_small_straight_6(self):
+        score_checker = self.create_score_checker([5,3,4,6,6])
+        self.assertEquals(30, score_checker.small_straight())
+
+    def test_not_small_straight(self):
+        score_checker = self.create_score_checker([5,1,2,4,6])
+        self.assertEquals(0, score_checker.small_straight())
+
 
 if __name__ == "__main__":
     unittest.main()

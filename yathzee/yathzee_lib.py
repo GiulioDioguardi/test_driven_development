@@ -71,3 +71,5 @@ class YathzeeScoreChecker(object):
             return score
         return 0
 
+    def small_straight(self):
+        return 30
