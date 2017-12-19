@@ -121,13 +121,13 @@ class TestYathzeeScoreCheker(unittest.TestCase):
         score_checker = self.create_score_checker([5,3,3,4,6])
         self.assertEquals(30, score_checker.small_straight())
 
-#    def test_small_straight_4(self):
-#        score_checker = self.create_score_checker([5,3,4,4,6])
-#        self.assertEquals(30, score_checker.small_straight())
+    def test_small_straight_4(self):
+        score_checker = self.create_score_checker([5,3,4,4,6])
+        self.assertEquals(30, score_checker.small_straight())
 
-#    def test_small_straight_5(self):
-#        score_checker = self.create_score_checker([5,3,4,5,6])
-#        self.assertEquals(30, score_checker.small_straight())
+    def test_small_straight_5(self):
+        score_checker = self.create_score_checker([5,3,4,5,6])
+        self.assertEquals(30, score_checker.small_straight())
 
     def test_small_straight_6(self):
         score_checker = self.create_score_checker([5,3,4,6,6])

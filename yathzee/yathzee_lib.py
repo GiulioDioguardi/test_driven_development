@@ -72,12 +72,17 @@ class YathzeeScoreChecker(object):
         return 0
 
     def small_straight(self):
-        seqs = []
-        for i in range(2):
-            is_straight = True
-            for j in range(3):
-                is_straight = is_straight and self.dices[i + j] == self.dices[i + j + 1] -1
-            seqs.append(is_straight)
-        if any(seqs):
+        if self.longest_consecutive(self.dices) > 3:
             return 30
         return 0
+
+    def longest_consecutive(self, nums):
+        longest_streak = 0
+        for num in nums:
+            current_num = num
+            current_streak = 1
+            while current_num + 1 in nums:
+                current_num += 1
+                current_streak += 1
+            longest_streak = max(longest_streak, current_streak)
+        return longest_streak
