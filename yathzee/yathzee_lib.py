@@ -6,7 +6,7 @@ class YathzeeScoreCheckerError(Exception):
 class YathzeeScoreChecker(object):
 
     def __init__(self, dices):
-        self.dices = sorted(dices)
+        self.dices = dices
         self.check_length()
         self.check_type()
         self.check_range()
@@ -61,15 +61,20 @@ class YathzeeScoreChecker(object):
         return self.number_of_kind(5, 50)
 
     def number_of_kind(self, number, score):
-        seqs = []
-        for i in range(6 - number):
-            is_kind = True
-            for j in range(number):
-                is_kind = is_kind and self.dices[0 + i] == self.dices[j + i]
-            seqs.append(is_kind)
-        if any(seqs):
+        if self.most_of_the_same() > number:
             return score
         return 0
+
+    def most_of_the_same(self):
+        most_same = 0
+        for dice in self.dices:
+            current_dice = dice
+            current_same = 1
+            for checked_dice in self.dices:
+                if checked_dice == current_dice:
+                    current_same += 1
+            most_same = max(most_same, current_same)
+        return most_same
 
     def small_straight(self):
         if self.longest_consecutive(self.dices) > 3:
