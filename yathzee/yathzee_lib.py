@@ -77,21 +77,21 @@ class YathzeeScoreChecker(object):
         return most_same
 
     def small_straight(self):
-        if self.longest_consecutive(self.dices) > 3:
+        if self.longest_consecutive() > 3:
             return 30
         return 0
 
     def large_straight(self):
-        if self.longest_consecutive(self.dices) > 4:
+        if self.longest_consecutive() > 4:
             return 40
         return 0
 
-    def longest_consecutive(self, nums):
+    def longest_consecutive(self):
         longest_streak = 0
-        for num in nums:
+        for num in self.dices:
             current_num = num
             current_streak = 1
-            while current_num + 1 in nums:
+            while current_num + 1 in self.dices:
                 current_num += 1
                 current_streak += 1
             longest_streak = max(longest_streak, current_streak)
