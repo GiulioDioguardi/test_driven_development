@@ -91,3 +91,6 @@ class YathzeeScoreChecker(object):
                 current_streak += 1
             longest_streak = max(longest_streak, current_streak)
         return longest_streak
+
+    def chance(self):
+        return sum(self.dices)
