@@ -141,6 +141,12 @@ class TestYathzeeScoreCheker(unittest.TestCase):
         score_checker = self.create_score_checker([5,1,4,4,6])
         self.assertEquals(0, score_checker.small_straight())
 
+    def test_large_straight(self):
+        score_checker = self.create_score_checker([1,2,3,4,5])
+        self.assertEquals(40, score_checker.large_straight())
 
+    def test_not_large_straight(self):
+        score_checker = self.create_score_checker([1,3,4,5,6])
+        self.assertEquals(0, score_checker.large_straight())
 if __name__ == "__main__":
     unittest.main()

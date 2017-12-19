@@ -76,6 +76,11 @@ class YathzeeScoreChecker(object):
             return 30
         return 0
 
+    def large_straight(self):
+        if self.longest_consecutive(self.dices) > 4:
+            return 40
+        return 0
+
     def longest_consecutive(self, nums):
         longest_streak = 0
         for num in nums:
