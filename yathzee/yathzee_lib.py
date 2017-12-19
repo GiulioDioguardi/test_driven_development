@@ -72,4 +72,12 @@ class YathzeeScoreChecker(object):
         return 0
 
     def small_straight(self):
-        return 30
+        seqs = []
+        for i in range(2):
+            is_straight = True
+            for j in range(3):
+                is_straight = is_straight and self.dices[i + j] == self.dices[i + j + 1] -1
+            seqs.append(is_straight)
+        if any(seqs):
+            return 30
+        return 0
