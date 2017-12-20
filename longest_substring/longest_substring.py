@@ -2,7 +2,10 @@
 
 
 def length_of_longest_substring(s):
-
+    """
+    Return the length of the longest substring without repeating characters
+    in string s
+    """
     def compare():
         return max(cur_length, longest_substring)
 
