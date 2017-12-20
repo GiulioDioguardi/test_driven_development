@@ -11,5 +11,8 @@ class TestLongestSubstring(unittest.TestCase):
         string = "abcabcbb" #longest is 'abc'
         self.assertEquals(3, length_of_longest_substring(string))
 
+    def test_can_cat_another_substring_3(self):
+        self.assertEquals(3, length_of_longest_substring("pwwkew"))
+
 if __name__ == "__main__":
     unittest.main()
