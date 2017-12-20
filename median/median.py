@@ -19,5 +19,8 @@ class TestMedian(unittest.TestCase):
     def test_even_count(self):
         self.assertEquals(2.5, find_median_sorted_arrays([1, 2], [3, 4]))
 
+    def test_count_two(self):
+        self.assertEquals(2.0, find_median_sorted_arrays([1], [3]))
+
 if __name__ == "__main__":
     unittest.main()
