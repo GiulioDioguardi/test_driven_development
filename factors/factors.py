@@ -27,7 +27,7 @@ def get_parser():
     return parsed_args
 
 def search_primes(max):
-    number = 10000000
+    number = 1
     while max > 0:
         if len(factors_of(number)) == 1:
             print number
