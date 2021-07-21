@@ -35,6 +35,6 @@ def search_primes(max):
 if __name__ == "__main__":
     args = get_parser()
     if args.number:
-        print(factors_of(parser.number))
+        print(factors_of(args.number))
     if args.search_primes:
-        search_primes(parser.search_primes)
+        search_primes(args.search_primes)
